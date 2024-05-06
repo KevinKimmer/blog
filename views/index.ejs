@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
-    <nav>
-        <div class="site-title">
-            <a href="=/"><h1>Welcom to Waikiki</h1></a>
-            <p>Just for a refresher</p>
-        </div>
-        <a href="/">Blogs</a>
-        <a href="/about">About</a>
-        <a href="blogs/create">New Blog</a>
-    </nav>
+
+
+    <%- include('./partials/nav.ejs') %>
 
     <div class="blogs contetnt">
         <h2>All Blogs</h2>
+        <% if (blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <h3 class="title"><%= blog.title %></h3>
+                <p class="snipper"><%= blog.snippet %></p>
+            <% }) %>
+        <% } else { %>
+                <p>These are not the blogs you are looking for....</p>
+            <% } %>
     </div>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
